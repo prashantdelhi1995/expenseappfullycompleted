@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="./expense.html">Leaderboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./expense.html">Home</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">Leaderboard</h1>
+    <table id="leaderboardTable" class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Total Spend</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+
+  <script>
+    window.addEventListener("DOMContentLoaded", async () => {
+      async function populateTable() {
+        try {
+          const res = await axios.get("http://localhost:3000/leaderboard");
+          const tbody = document.querySelector("#leaderboardTable tbody");
+          tbody.innerHTML = ""; // Clear existing rows
+
+          res.data.forEach(person => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${person.name}</td>
+              <td>${person.totalSpend}</td>
+            `;
+            tbody.appendChild(row);
+          });
+        } catch (error) {
+          console.error("Error fetching leaderboard data:", error);
+        }
+      }
+
+      // Call the populateTable function to initially populate the table
+      populateTable();
+    });
+  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-GSyJmkVYLjRzzY5BgpQyxlzEP+NyZdVBhxJpV+V7ZLrbv79B25dE1V9sU0DlIjyk+B70xZDWKlHsFFvt+/qF6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

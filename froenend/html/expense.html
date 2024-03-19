@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>expense tracker</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+ <!-- nav bar area -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">ExpenseApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <!-- Add your logout button here -->
+        <li class="nav-item">
+          <button class="btn btn-danger" style="float: left;" onclick="handleLogout()">Logout</button>
+        </li>
+      </ul>
+      <span class="navbar-text mr-4">
+        <div class="container text-center"> <!-- Centering container -->
+          <button id="buyPremium" onclick="handleOnClick(event)" class="btn btn-primary">Buy buyPremium</button>
+          <div id="message"></div>
+        
+      </span>
+    </div>
+  </nav>
+
+
+
+
+
+  
+
+
+  
+
+    <form method="POST"  id="form">
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amountinput" name="amountinput" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" id="descriptioninput" name="descriptioninput" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="categories">Category:</label>
+        <select name="choose" id="categories" class="form-control">
+          <option value="#" selected>Choose one of them</option>
+          <option value="fuel" id="fuel" name="fuel">Fuel</option>
+          <option value="medical" id="medical" name="medical">Medical</option>
+          <option value="travel" id="travel" name="travel">Travel</option>
+          <option value="movie" id="movie" name="movies">Movies</option>
+        </select>
+      </div>
+
+      <input type="submit" value="Add" id="submit" class="btn btn-primary" />
+    </form>
+
+    <button onclick="download(event)" class="btn btn-primary">Download Expense</button>
+
+    <div>
+      <ul id="expenseList"></ul>
+    </div>
+
+    <button id="leadorboardDetails" onclick="handleLeadorboard(event)" class="btn btn-primary">Get Leaderboard</button>
+    <div id="leaderboar-heading">
+      <ul id="leaderboard"></ul>
+    </div>
+  </div>
+  
+  <ul class="list" id="list"></ul>
+  <table class="table table-success table-striped" id="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Category</th>
+     
+      
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <!-- Navigation Component -->
+<!-- Navigation Component -->
+<nav>
+  <ul id="pagination" class="pagination justify-content-center">
+    <!-- Pagination buttons will be dynamically inserted here -->
+  </ul>
+</nav>
+
+
+  
+  <style>
+    #container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: -50px;
+    }
+  </style>
+
+  <div id="container">
+    <label for="pageDropValue">Rows per page:</label>
+    <select name="pageDropValue" id="pageDropValue" style="max-width: 6%;">
+      <option value="page">page:</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+    <span id="span"></span>
+  </div>
+ 
+</form>
+</div>
+</div>
+</ul>
+</div>
+
+
+  <!-- Add script in head -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../javascript/expense.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
